@@ -1,0 +1,54 @@
+body {
+
+    textarea {
+        font-family: sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100vh;
+    }
+
+    .form_box {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .form_box .title {
+        padding: flex;
+        font-size: 24px 32px;
+        border-bottom: thin solid #ccc;
+    }
+
+    .form_box imput,
+    .form_box textarea {
+        width: calc(97% - 8px);
+        height: 100px;
+        border-radius: 2px;
+        padding-left: 16px;
+        margin-bottom: 16px;
+        font-size: 16px;
+    }
+
+    .form_box button {
+            display: block;
+            border: none;
+            outline: none;
+            width: 180px;
+            height: 48px;
+            border-radius: 2px;
+            background-color: rgb(94, 93, 93);
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+    }
+
+    .form_box button:hover {
+        background: #797878;
+    }
+}
