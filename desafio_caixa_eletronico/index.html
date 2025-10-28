@@ -1,45 +1,55 @@
 <!DOCTYPE html>
-<html lang="pr-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caixa Eletrônico</title>
+  <meta charset="UTF-8">
+  <title>Caixa Eletrônico Simples</title>
 </head>
 <body>
-    <script>
-        let saldo = 0
-        let sair = false
-        while(!sair) {
-            let opcao = prompt("Bem vindo! \n" + 
-            "1 -> depositar \n" +
-            "2 -> consultar \n" +
-            "3 -> sacar \n" +
-            "4 -> sair \n")
+  <h1>Caixa Eletrônico</h1>
 
-            if (opcao == 4) {
-                alert("Obrigado, até a próxima")
-                sair = true
+  <p>Saldo atual: R$ <span id="saldo">0.00</span></p>
 
-            } else if (opcao == 1) {
-                let valor = prompt ("Qual o valor do depósito?")
-                saldo = saldo + parseFloat(valor)
-                alert("Deposito com sucesso" + saldo)
-           
-            } else if (opcao == 2) {
-                alert("Seu saldo é de: " + saldo)
+  <input type="number" id="valor" placeholder="Digite o valor">
+  <br><br>
 
-            } else if (opcao == 3) {
-                let valor = Number(prompt("Digite o valor que voçê deseja sacar:"))
-                if(valor > saldo) {
-                alert("Saldo insuficiente")
-                continue
-                }
-                saldo -= valor
-    
-            } else {
-                alert ("Digite a opção válida!")
-            }
-        }
-    </script>
+  <button onclick="depositar()">Depositar</button>
+  <button onclick="sacar()">Sacar</button>
+  <button onclick="consultar()">Consultar Saldo</button>
+
+  <script>
+    let saldo = 0;
+
+    function depositar() {
+      let valor = Number(document.getElementById('valor').value);
+      if (valor > 0) {
+        saldo += valor;
+        alert("Depósito de R$ " + valor.toFixed(2) + " realizado!");
+        atualizarSaldo();
+      } else {
+        alert("Digite um valor válido para depositar.");
+      }
+    }
+
+    function sacar() {
+      let valor = Number(document.getElementById('valor').value);
+      if (valor > 0 && valor <= saldo) {
+        saldo -= valor;
+        alert("Saque de R$ " + valor.toFixed(2) + " realizado!");
+        atualizarSaldo();
+      } else if (valor > saldo) {
+        alert("Saldo insuficiente!");
+      } else {
+        alert("Digite um valor válido para sacar.");
+      }
+    }
+
+    function consultar() {
+      alert("Seu saldo atual é: R$ " + saldo.toFixed(2));
+    }
+
+    function atualizarSaldo() {
+      document.getElementById('saldo').textContent = saldo.toFixed(2);
+    }
+  </script>
 </body>
 </html>
